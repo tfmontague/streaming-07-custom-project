@@ -96,21 +96,21 @@ def main(host: str, csv_file: str):
                         pass
 
                     # Read values every 30 seconds
-                    time.sleep(1)
+                    time.sleep(30)
 
             except pika.exceptions.AMQPConnectionError as e:
                 print(f"Error: Connection to RabbitMQ server failed: {e}")
-                sys.exit(1)
+                sys.exit(30)
             finally:
                 # Close the connection to the server
                 conn.close()
 
     except FileNotFoundError as e:
         print(f"Error: CSV file not found: {e}")
-        sys.exit(1)
+        sys.exit(30)
     except Exception as e:
         print(f"Error: {e}")
-        sys.exit(1)
+        sys.exit(30)
 
 # Standard Python idiom to indicate main program entry point
 # This allows us to import this module and use its functions without executing the code below.
